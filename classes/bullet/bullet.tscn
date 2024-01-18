@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bs7twnp63sib0"]
+
+[ext_resource type="Script" path="res://scripts/bullet/bullet.gd" id="1_5djuj"]
+[ext_resource type="Texture2D" uid="uid://ukucm8xtgge" path="res://assets/sprites/shipsMiscellaneous_sheet.png" id="1_yiccj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7x411"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wc3vo"]
+radius = 6.0
+
+[node name="Bullet" type="RigidBody2D"]
+script = ExtResource("1_5djuj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_yiccj")
+region_enabled = true
+region_rect = Rect2(119, 422, 12, 11)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7x411")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_wc3vo")

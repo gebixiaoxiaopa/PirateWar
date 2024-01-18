@@ -1,0 +1,91 @@
+[gd_scene load_steps=6 format=3 uid="uid://dmuv5opti5kox"]
+
+[ext_resource type="Texture2D" uid="uid://25u3qdotu60r" path="res://assets/gui/uipack_rpg_sheet.png" id="1_3tg41"]
+[ext_resource type="Script" path="res://scripts/gui/WorldOptions.gd" id="1_q5fwc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_coyrs"]
+atlas = ExtResource("1_3tg41")
+region = Rect2(190, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndsbk"]
+atlas = ExtResource("1_3tg41")
+region = Rect2(0, 49, 190, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifhlc"]
+atlas = ExtResource("1_3tg41")
+region = Rect2(0, 98, 190, 45)
+
+[node name="WorldOptions" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_q5fwc")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = SubResource("AtlasTexture_coyrs")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Seed" type="LineEdit" parent="Panel"]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 88.0
+offset_right = 832.0
+offset_bottom = 128.0
+placeholder_text = "Seed:"
+
+[node name="ButtonCreate" type="TextureButton" parent="Panel"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 384.0
+offset_right = 512.0
+offset_bottom = 448.0
+texture_normal = SubResource("AtlasTexture_ndsbk")
+texture_pressed = SubResource("AtlasTexture_ifhlc")
+stretch_mode = 0
+
+[node name="LabelCreate" type="Label" parent="Panel/ButtonCreate"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 8.0
+offset_right = 277.0
+offset_bottom = 66.0
+theme_override_font_sizes/font_size = 28
+text = "Creat World
+"
+
+[node name="ButtonCancle" type="TextureButton" parent="Panel"]
+layout_mode = 0
+offset_left = 648.0
+offset_top = 384.0
+offset_right = 904.0
+offset_bottom = 448.0
+texture_normal = SubResource("AtlasTexture_ndsbk")
+texture_pressed = SubResource("AtlasTexture_ifhlc")
+stretch_mode = 0
+
+[node name="LabelCancle" type="Label" parent="Panel/ButtonCancle"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 8.0
+offset_right = 309.0
+offset_bottom = 92.0
+theme_override_font_sizes/font_size = 28
+text = "Cancle
+
+"
+
+[connection signal="text_submitted" from="Panel/Seed" to="." method="_on_seed_text_submitted"]
+[connection signal="pressed" from="Panel/ButtonCreate" to="." method="_on_button_create_pressed"]
+[connection signal="pressed" from="Panel/ButtonCancle" to="." method="_on_button_cancle_pressed"]

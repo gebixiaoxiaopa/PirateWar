@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://bksipwdvb4fvy"]
+
+[ext_resource type="Script" path="res://scripts/players/Player.gd" id="1_1es01"]
+[ext_resource type="Texture2D" uid="uid://ukucm8xtgge" path="res://assets/sprites/shipsMiscellaneous_sheet.png" id="2_3c1cy"]
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+rotation = -0.000150563
+script = ExtResource("1_1es01")
+Speed = 500
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." groups=["Player"]]
+rotation = 4.72726
+polygon = PackedVector2Array(0, 56, 20, 10, 20, -33, 0, -57, -20, -32, -20, 9)
+
+[node name="Camera2D" type="Camera2D" parent="." groups=["Player"]]
+
+[node name="Timer" type="Timer" parent="." groups=["Player"]]
+autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["Player"]]
+rotation = -1.55593
+texture = ExtResource("2_3c1cy")
+region_enabled = true
+region_rect = Rect2(408, 0, 66, 113)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

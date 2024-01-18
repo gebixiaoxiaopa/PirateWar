@@ -1,0 +1,84 @@
+[gd_scene load_steps=6 format=3 uid="uid://cwecui0d2xogw"]
+
+[ext_resource type="Script" path="res://scripts/gui/Pause.gd" id="1_2kh8g"]
+[ext_resource type="Texture2D" uid="uid://25u3qdotu60r" path="res://assets/gui/uipack_rpg_sheet.png" id="2_nnny3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1iorq"]
+atlas = ExtResource("2_nnny3")
+region = Rect2(0, 49, 190, 49)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfdn1"]
+atlas = ExtResource("2_nnny3")
+region = Rect2(0, 98, 190, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lochs"]
+atlas = ExtResource("2_nnny3")
+region = Rect2(0, 98, 190, 45)
+
+[node name="Pause" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2kh8g")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonBack" type="TextureButton" parent="Panel"]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 384.0
+offset_right = 704.0
+offset_bottom = 448.0
+texture_normal = SubResource("AtlasTexture_1iorq")
+texture_pressed = SubResource("AtlasTexture_gfdn1")
+stretch_mode = 0
+
+[node name="ButtonCancle" type="TextureButton" parent="Panel"]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 512.0
+offset_right = 704.0
+offset_bottom = 576.0
+texture_normal = SubResource("AtlasTexture_1iorq")
+texture_pressed = SubResource("AtlasTexture_lochs")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 400.0
+offset_right = 671.0
+offset_bottom = 433.0
+theme_override_font_sizes/font_size = 20
+text = "Back to Main Menu
+"
+
+[node name="Label2" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 544.0
+offset_top = 528.0
+offset_right = 735.0
+offset_bottom = 590.0
+theme_override_font_sizes/font_size = 20
+text = "Cancle
+
+"
+
+[connection signal="pressed" from="Panel/ButtonBack" to="." method="_on_button_back_pressed"]
+[connection signal="pressed" from="Panel/ButtonCancle" to="." method="_on_button_cancle_pressed"]
