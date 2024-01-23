@@ -1,0 +1,15 @@
+extends Control
+@onready var health_bar:ProgressBar = $HealthBar
+@onready var PlayerInstance: CharacterBody2D = $"../Player"
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	self.global_position = Vector2(PlayerInstance.global_position.x-100,PlayerInstance.global_position.y-100)
+	update_health()
+func update_health()->void:
+	health_bar.value = PlayerInstance.Health
