@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cs5rur4nw6rd6"]
+[gd_scene load_steps=5 format=3 uid="uid://cs5rur4nw6rd6"]
 
 [ext_resource type="Script" path="res://classes/enemy/enemy.gd" id="1_1yc6i"]
 [ext_resource type="Texture2D" uid="uid://ukucm8xtgge" path="res://assets/sprites/shipsMiscellaneous_sheet.png" id="1_oqtec"]
+[ext_resource type="Script" path="res://scripts/Hitbox/Hitbox.gd" id="3_hkca4"]
+[ext_resource type="Script" path="res://scripts/Hurtbox/hurtbox.gd" id="4_nnxj2"]
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_1yc6i")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -17,8 +19,16 @@ rotation = 4.72726
 polygon = PackedVector2Array(0, 56, 20, 10, 20, -33, 0, -57, -20, -32, -20, 9)
 
 [node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("3_hkca4")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 polygon = PackedVector2Array(24, -16, 64, 0, 24, 16)
 
+[node name="Hurtbox" type="Area2D" parent="."]
+script = ExtResource("4_nnxj2")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hurtbox"]
+polygon = PackedVector2Array(-32, 24, 8, 32, 24, 16, 64, 0, 24, -16, 8, -32, -32, -24, -56, 0)
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="hit" from="Area2D" to="." method="_on_area_2d_hit"]

@@ -15,9 +15,11 @@ script = ExtResource("1_a8xfk")
 
 [node name="BulletsBar" type="ProgressBar" parent="."]
 layout_mode = 0
-offset_right = 192.0
-offset_bottom = 16.0
-rotation = 0.000763655
+offset_left = 1152.0
+offset_top = 16.0
+offset_right = 1344.0
+offset_bottom = 32.0
+rotation = 3.14159
 theme = ExtResource("2_blfo0")
 max_value = 10.0
 step = 1.0
@@ -26,9 +28,8 @@ show_percentage = false
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 layout_mode = 0
-offset_top = 24.0
 offset_right = 192.0
-offset_bottom = 40.0
+offset_bottom = 16.0
 theme = ExtResource("1_86v5x")
 max_value = 10.0
 step = 1.0

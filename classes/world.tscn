@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://btj8q8mtoc8h6"]
+[gd_scene load_steps=10 format=3 uid="uid://btj8q8mtoc8h6"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_y8nqt"]
 [ext_resource type="Texture2D" uid="uid://b6x8qv1twdjjn" path="res://assets/tiles/tiles_sheet.png" id="2_68i3k"]
 [ext_resource type="Script" path="res://TileMap.gd" id="3_c0sd1"]
 [ext_resource type="PackedScene" uid="uid://bksipwdvb4fvy" path="res://classes/players/Player.tscn" id="4_wyvqc"]
 [ext_resource type="PackedScene" uid="uid://b2nxr80s2jmd2" path="res://classes/gui/state.tscn" id="5_sd4ui"]
+[ext_resource type="PackedScene" uid="uid://cwecui0d2xogw" path="res://classes/gui/Pause.tscn" id="6_7d14a"]
+[ext_resource type="PackedScene" uid="uid://vimoqemnn4yw" path="res://assets/gui/restart_screen.tscn" id="7_6jvt2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x5r2f"]
 texture = ExtResource("2_68i3k")
@@ -309,6 +311,7 @@ sources/0 = SubResource("TileSetAtlasSource_x5r2f")
 script = ExtResource("1_y8nqt")
 
 [node name="TileMap" type="TileMap" parent="."]
+process_mode = 3
 tile_set = SubResource("TileSet_kui8e")
 format = 2
 layer_1/name = ""
@@ -322,5 +325,19 @@ script = ExtResource("3_c0sd1")
 
 [node name="Player" parent="." instance=ExtResource("4_wyvqc")]
 
-[node name="State" parent="." instance=ExtResource("5_sd4ui")]
-z_index = 100
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="State" parent="CanvasLayer" instance=ExtResource("5_sd4ui")]
+z_index = 1
+
+[node name="RestartScreen" parent="CanvasLayer" instance=ExtResource("7_6jvt2")]
+process_mode = 3
+visible = false
+z_index = 2
+
+[node name="Pause" parent="CanvasLayer" instance=ExtResource("6_7d14a")]
+process_mode = 3
+visible = false
+z_index = 2
+
+[editable path="CanvasLayer/Pause"]

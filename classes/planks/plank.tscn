@@ -1,15 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://r7prifugufvv"]
+[gd_scene load_steps=6 format=3 uid="uid://r7prifugufvv"]
 
 [ext_resource type="Script" path="res://scripts/Plank/Plank.gd" id="1_jdwdn"]
 [ext_resource type="Texture2D" uid="uid://ukucm8xtgge" path="res://assets/sprites/shipsMiscellaneous_sheet.png" id="2_be7rp"]
+[ext_resource type="Script" path="res://scripts/Hitbox/Hitbox.gd" id="3_6fbod"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cobft"]
 size = Vector2(26, 10)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_avs7m"]
-size = Vector2(30, 14)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pc26g"]
+size = Vector2(30, 16)
 
-[node name="Plank" type="CharacterBody2D"]
+[node name="Plank" type="CharacterBody2D" groups=["plank"]]
 script = ExtResource("1_jdwdn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -20,9 +21,10 @@ region_rect = Rect2(408, 472, 26, 10)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_cobft")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="."]
+script = ExtResource("3_6fbod")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_avs7m")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_pc26g")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="hit" from="Hitbox" to="." method="_on_hitbox_hit"]

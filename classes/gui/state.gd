@@ -12,4 +12,4 @@ func _process(delta: float) -> void:
 	self.global_position = Vector2(PlayerInstance.global_position.x-100,PlayerInstance.global_position.y-100)
 	update_health()
 func update_health()->void:
-	health_bar.value = PlayerInstance.Health
+	health_bar.value = PlayerData.Health

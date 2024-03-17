@@ -1,3 +1,4 @@
+class_name Plank
 extends CharacterBody2D
 
 
@@ -11,7 +12,10 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.name=="Player" and Player.Health <10:
-		Player.Health +=1
-		self.queue_free()
+
+
+
+func _on_hitbox_hit(hurtbox) -> void:
+	if hurtbox.owner.is_in_group("Player"):
+		if PlayerData.Health!=10:
+			self.queue_free() 

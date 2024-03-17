@@ -1,3 +1,5 @@
+res://Data
+res://scripts/players
 res://assets/gui
 res://scripts/gui
 res://classes/planks
@@ -6,7 +8,6 @@ D:/2D_Game/PirateWar/exported/windows
 res://
 D:/2D_Game/PirateWar/classes/enemy
 res://classes/gui
-res://scripts/players
 res://classes/players
 res://classes/enemy
 res://scripts/bullet

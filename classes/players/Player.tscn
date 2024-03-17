@@ -1,16 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://bksipwdvb4fvy"]
+[gd_scene load_steps=4 format=3 uid="uid://bksipwdvb4fvy"]
 
-[ext_resource type="Script" path="res://scripts/players/Player.gd" id="1_1es01"]
+[ext_resource type="Script" path="res://scripts/players/Player.gd" id="1_dcaew"]
 [ext_resource type="Texture2D" uid="uid://ukucm8xtgge" path="res://assets/sprites/shipsMiscellaneous_sheet.png" id="2_3c1cy"]
+[ext_resource type="Script" path="res://scripts/Hurtbox/hurtbox.gd" id="3_hs4hk"]
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
-rotation = -0.000150563
-script = ExtResource("1_1es01")
-Speed = 500
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." groups=["Player"]]
-rotation = 4.72726
-polygon = PackedVector2Array(0, 56, 20, 10, 20, -33, 0, -57, -20, -32, -20, 9)
+rotation = -0.0408653
+script = ExtResource("1_dcaew")
 
 [node name="Camera2D" type="Camera2D" parent="." groups=["Player"]]
 
@@ -18,11 +14,25 @@ polygon = PackedVector2Array(0, 56, 20, 10, 20, -33, 0, -57, -20, -32, -20, 9)
 autostart = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["Player"]]
-rotation = -1.55593
+rotation = -1.53091
 texture = ExtResource("2_3c1cy")
 region_enabled = true
 region_rect = Rect2(408, 0, 66, 113)
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." groups=["Player"]]
+rotation = -1.5314
+polygon = PackedVector2Array(0, 56, 20, 10, 20, -33, 0, -57, -20, -32, -20, 9)
+
 [node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(79.9332, 3.26831)
+rotation = 0.0436332
+
+[node name="Hurtbox" type="Area2D" parent="."]
+script = ExtResource("3_hs4hk")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hurtbox"]
+rotation = 0.0401728
+polygon = PackedVector2Array(8.01662, -23.9945, 64, 0.0443223, 7.98338, 24.0055, -32.0166, 23.9778, -64, -0.0443223, -31.9834, -24.0222)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]

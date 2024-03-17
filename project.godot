@@ -21,11 +21,10 @@ boot_splash/use_filter=false
 [autoload]
 
 WorldOptions="*res://scripts/gui/WorldOptions.gd"
-Player="*res://scripts/players/Player.gd"
+PlayerData="*res://Data/PlayerData.gd"
 
 [display]
 
-window/size/mode=3
 window/stretch/mode="canvas_items"
 mouse_cursor/custom_image="res://assets/gui/cursorSword_silver.png"
 

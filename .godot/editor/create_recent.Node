@@ -1,12 +1,17 @@
+CollisionPolygon2D
+Hurtbox
+CanvasLayer
+Node
+EnemyBody
+Area2D
+Hitbox
+CollisionShape2D
 Label
 TextureButton
 TextureRect
 Panel
-CollisionShape2D
-Area2D
 Sprite2D
 CharacterBody2D
-CollisionPolygon2D
 LinkButton
 Marker2D
 ColorRect
@@ -25,4 +30,3 @@ Button
 BoxContainer
 VBoxContainer
 MarginContainer
-TileMap

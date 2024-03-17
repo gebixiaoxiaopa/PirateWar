@@ -1,12 +1,8 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://bd1u74m3cy7nd"]
 
 [ext_resource type="Script" path="res://scripts/players/Player.gd" id="1_joql8"]
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(3.20187, 3.33922)
 rotation = -2.67696
-scale = Vector2(1, 1)
 script = ExtResource("1_joql8")
-Health = 10
-Bullets = 10
-Speed = 20

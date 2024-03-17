@@ -1,7 +1,7 @@
-
+class_name EnemyBody
 extends CharacterBody2D
 var Speed=200
-
+signal Hit()
 @onready var player: CharacterBody2D = get_parent().get_node("/root/World/Player")
 
 # Called when the node enters the scene tree for the first time.
@@ -20,6 +20,15 @@ func _process(delta: float) -> void:
 	
 
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.name =="Player" and Player.Health>0:
-		Player.Health -=1
+
+
+
+
+
+
+		
+
+
+func _on_area_2d_hit(hurtbox) -> void:
+	if hurtbox.owner.name=="Player":
+		Hit.emit()
